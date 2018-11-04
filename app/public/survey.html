@@ -8,7 +8,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
@@ -22,6 +22,8 @@
     <main class="container">
         <h2>Help us find your match!</h2>
         <form id="survey" action="POST">
+            <label for="name">Your name</label>
+            <input name="name" type="text">
             <ol>
                 <div id="q1">
                     <li>I believe men and women should have the same rights.</li>
@@ -306,6 +308,7 @@
             </ol>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+      
     </main>
 
 </body>
@@ -320,18 +323,20 @@
             answerArray.push($("#survey [name='q" + [i] + "']:checked").val());
         };
         var newResponse = {
-            name: $("#survey [name='name']".val()),
+            name: $("#survey [name='name']").val(),
             answers: answerArray
         };
 
+        console.log(newResponse);
+
 //CHECK WHAT NEEDS TO GO AS URL
-        $.ajax("/todos", {
+        $.ajax("/survey", {
             type: "POST",
             data: newResponse
         }).then(
             function () {
                 console.log("Responses added");
-                // Reload the page to get the updated list
+              
                 location.reload();
             }
         );
