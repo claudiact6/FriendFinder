@@ -27,6 +27,7 @@ app.post("/api/friends", function (req, res) {
     };
     var parsedReqBody = {
         name: req.body.name,
+        pic: req.body.pic,
         answers: parsedReqAnswers
     };
     //Empty comparison before doing new comparison
@@ -44,18 +45,20 @@ app.post("/api/friends", function (req, res) {
     console.log(candidateComparison);
     var minimum = Array.min(candidateComparison);
     var index = candidateComparison.indexOf(minimum);
-    console.log(index);
     //If to avoid errors when there are 0 other candidates
-    if (candidates.length > 1) {
+    if (candidates.length > 0) {
     console.log(candidates[index].name);
     var response = {
         name: candidates[index].name,
-        pic: candidates[index].pic
+        pic: candidates[index].pic,
+        compatibility: (1 - (minimum / 40)) * 100
     };
+    console.log(response);
     res.send(response);
-    }
+    };
     //Add this candidate to the list of candidates
     candidates.push(parsedReqBody);
+    console.log(candidates);
 });
 
 
