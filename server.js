@@ -62,7 +62,7 @@ app.post("/api/friends", function (req, res) {
 });
 
 
-app.listen(port, function () {
+app.listen(process.env.PORT || port, function () {
     console.log("Listening on http://localhost:" + port);
 });
 
