@@ -3,9 +3,26 @@
 }
 
 body {
-    background-color:lightskyblue;
+    background-color: #ffec5c;
 }
 
 main {
+    background-color: white;
+}
+
+.btn {
+    background-color: #008dcb;
+    border-color: #008dcb; 
+}
+
+h1, h2, h3, h4, h5 {
+    color: #e1315b;
+}
+
+p {
+    color: #2f3131;
+}
+
+.jumbotron {
     background-color: white;
 }
